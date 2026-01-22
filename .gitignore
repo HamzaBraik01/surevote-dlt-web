@@ -1,0 +1,91 @@
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.sublime-project
+*.sw?
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Angular
+/.angular/cache
+/.angular/
+
+# Miscellaneous
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+__screenshots__/
+
+# System files
+.DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+*.lnk
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.staging
+.env.production
+*.env
+
+# Logs
+*.log
+logs/
+build_log.txt
+
+# Docker
+docker-compose.override.yml
+
+# Playwright / E2E
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Gemini / AI
+.gemini/
+
+# OS generated
+*.swp
+*.swo
+*~
+.Spotlight-V100
+.Trashes
+._*
+
+# Project-specific files
+SUREVOT.pdf
+SUREVOTE_Environment.json
+SUREVOTE_Postman_Collection.json
+git-commits.ps1

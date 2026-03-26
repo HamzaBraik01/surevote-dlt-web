@@ -49,10 +49,10 @@ import { RouterLink } from '@angular/router';
           <div>
             <h4 class="text-xs font-bold uppercase tracking-widest text-on-surface mb-4">Ressources</h4>
             <ul class="space-y-3">
-              <li><a href="#" class="text-sm text-on-surface-variant hover:text-primary transition-colors">Documentation</a></li>
-              <li><a href="#" class="text-sm text-on-surface-variant hover:text-primary transition-colors">Guide d'utilisation</a></li>
-              <li><a href="#" class="text-sm text-on-surface-variant hover:text-primary transition-colors">FAQ</a></li>
-              <li><a href="#" class="text-sm text-on-surface-variant hover:text-primary transition-colors">Support technique</a></li>
+              <li><a routerLink="/faq" class="text-sm text-on-surface-variant hover:text-primary transition-colors">FAQ</a></li>
+              <li><a routerLink="/contact" class="text-sm text-on-surface-variant hover:text-primary transition-colors">Contact</a></li>
+              <li><a routerLink="/faq" class="text-sm text-on-surface-variant hover:text-primary transition-colors">Guide d'utilisation</a></li>
+              <li><a routerLink="/contact" class="text-sm text-on-surface-variant hover:text-primary transition-colors">Support technique</a></li>
             </ul>
           </div>
 

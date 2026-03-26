@@ -14,17 +14,20 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
 
   const token = authService.getAccessToken();
-  const isAuthUrl = req.url.includes('/auth/login') || req.url.includes('/auth/register') || req.url.includes('/auth/refresh') || req.url.includes('/login') || req.url.includes('/register');
+  // URLs where we should NOT attach a Bearer token at all
+  const skipTokenUrl = req.url.includes('/auth/login') || req.url.includes('/auth/register') || req.url.includes('/auth/refresh') || req.url.includes('/login') || req.url.includes('/register');
+  // URLs where we should NOT attempt token refresh on 401 (includes 2FA which needs token but shouldn't trigger refresh)
+  const skipRefreshUrl = skipTokenUrl || req.url.includes('/auth/2fa/') || req.url.includes('/auth/password-reset/');
 
   let authReq = req;
-  if (token && !isAuthUrl) {
+  if (token && !skipTokenUrl) {
     authReq = req.clone({ setHeaders: { Authorization: `Bearer ${token}` } });
   }
 
   return next(authReq).pipe(
     catchError((error: HttpErrorResponse) => {
-      // Never try to refresh tokens for auth-related requests
-      if (error.status === 401 && !isAuthUrl) {
+      // Never try to refresh tokens for auth-related requests (login, register, 2FA, password-reset)
+      if (error.status === 401 && !skipRefreshUrl) {
         return handle401(authService, toastService, router, authReq, next);
       }
 

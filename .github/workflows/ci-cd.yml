@@ -44,8 +44,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Angular ESLint
-        run: npx ng add @angular-eslint/schematics --skip-confirmation
 
       - name: Run linter
         run: npx ng lint

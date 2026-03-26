@@ -76,7 +76,7 @@ import { ConfirmModalComponent } from '../../../shared/components/confirm-modal/
     <app-confirm-modal
       [visible]="showDeleteConfirm"
       title="Supprimer le collège"
-      [message]="'Supprimer le collège \\'' + (collegeToDelete?.nom || '') + '\\' ? Cette action est irréversible.'"
+      [message]="'Voulez-vous vraiment supprimer ce collège ? Cette action est irréversible.'"
       confirmText="Supprimer"
       type="danger"
       (confirmed)="doDelete()"

@@ -31,7 +31,10 @@ interface NavItem {
       class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low flex flex-col p-4 space-y-2 z-40 transition-transform duration-300">
       <!-- Brand -->
       <div class="mb-8 px-2 py-4">
-        <span class="text-lg font-black text-primary uppercase tracking-tighter">SUREVOTE</span>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+          <span class="text-lg font-black text-primary uppercase tracking-tighter">SUREVOTE</span>
+        </div>
         <div class="mt-4 flex items-center space-x-3">
           <div class="h-10 w-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold text-sm">
             {{ userInitials }}

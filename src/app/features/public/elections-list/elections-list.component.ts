@@ -16,7 +16,10 @@ import { FooterComponent } from '../../../shared/components/footer/footer.compon
   template: `
     <header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/10">
       <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a routerLink="/" class="text-2xl font-black tracking-tighter text-primary">SUREVOTE</a>
+        <a routerLink="/" class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+          <span class="text-xl font-black tracking-tighter text-primary">SUREVOTE</span>
+        </a>
         <button (click)="mobileMenuOpen.set(!mobileMenuOpen())" class="md:hidden p-2 rounded-xl hover:bg-surface-container-high transition-colors">
           <span class="material-symbols-outlined text-on-surface">{{ mobileMenuOpen() ? 'close' : 'menu' }}</span>
         </button>

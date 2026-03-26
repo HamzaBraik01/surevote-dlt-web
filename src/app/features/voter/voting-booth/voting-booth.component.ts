@@ -22,6 +22,7 @@ import { ConfirmModalComponent } from '../../../shared/components/confirm-modal/
     <header class="bg-surface-container-lowest z-40 relative">
       <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div class="flex items-center gap-4">
+          <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
           <span class="text-primary font-black tracking-tighter text-2xl">SUREVOTE</span>
           <div class="h-6 w-[1px] bg-outline-variant/30 hidden md:block"></div>
           <div>

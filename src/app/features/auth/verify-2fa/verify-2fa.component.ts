@@ -13,7 +13,10 @@ import { FooterComponent } from '../../../shared/components/footer/footer.compon
   template: `
     <header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm">
       <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <span class="text-2xl font-bold tracking-tighter text-primary">SUREVOTE</span>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+          <span class="text-xl font-black tracking-tighter text-primary">SUREVOTE</span>
+        </div>
         <div class="flex items-center gap-2 text-on-surface-variant text-sm font-medium bg-surface-container-low px-3 py-1.5 rounded-full">
           <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">lock</span>
           Session Sécurisée

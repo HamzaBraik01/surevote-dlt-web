@@ -10,17 +10,19 @@ import { ToastService } from '../../../core/services/toast.service';
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let authService: any;
-  let toastService: any;
+  let authService: Record<string, unknown>;
+  let toastService: Record<string, unknown>;
   let router: Router;
 
   beforeEach(async () => {
     authService = {
       login: vi.fn(),
       getCurrentUser: vi.fn(),
+      clearSession: vi.fn(),
       isLoggedIn: false,
       getAccessToken: vi.fn().mockReturnValue(null),
-      currentUser: null
+      currentUser: null,
+      userRole: null
     };
     toastService = {
       success: vi.fn(),
@@ -66,26 +68,27 @@ describe('LoginComponent', () => {
 
   it('should call authService.login on valid submit', () => {
     const mockResponse = { accessToken: 'tok', refreshToken: 'ref', user: { id: 1, role: 'ELECTEUR' } };
-    authService.login.mockReturnValue(of(mockResponse as any));
+    (authService['login'] as ReturnType<typeof vi.fn>).mockReturnValue(of(mockResponse));
 
     component.loginForm.patchValue({ email: 'test@test.com', password: '12345678' });
     component.onSubmit();
 
-    expect(authService.login).toHaveBeenCalled();
+    expect(authService['login']).toHaveBeenCalled();
   });
 
   it('should navigate to voter dashboard on ELECTEUR login', () => {
-    authService.login.mockReturnValue(of({ accessToken: 'tok', user: { role: 'ELECTEUR' } } as any));
+    (authService['login'] as ReturnType<typeof vi.fn>).mockReturnValue(of({ accessToken: 'tok', user: { role: 'ELECTEUR' } }));
+    authService['userRole'] = 'ELECTEUR';
 
     component.loginForm.patchValue({ email: 'test@test.com', password: '12345678' });
     component.onSubmit();
 
-    expect(authService.login).toHaveBeenCalled();
+    expect(authService['login']).toHaveBeenCalled();
     expect(router.navigate).toHaveBeenCalledWith(['/voter/dashboard']);
   });
 
   it('should display server error on login failure', () => {
-    authService.login.mockReturnValue(throwError(() => ({ error: { message: 'Invalid credentials' } })));
+    (authService['login'] as ReturnType<typeof vi.fn>).mockReturnValue(throwError(() => ({ error: { message: 'Invalid credentials' } })));
 
     component.loginForm.patchValue({ email: 'test@test.com', password: '12345678' });
     component.onSubmit();
@@ -94,7 +97,7 @@ describe('LoginComponent', () => {
   });
 
   it('should set loading to false after error', () => {
-    authService.login.mockReturnValue(throwError(() => ({ error: { message: 'Error' } })));
+    (authService['login'] as ReturnType<typeof vi.fn>).mockReturnValue(throwError(() => ({ error: { message: 'Error' } })));
 
     component.loginForm.patchValue({ email: 'test@test.com', password: '12345678' });
     component.onSubmit();

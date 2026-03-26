@@ -17,7 +17,9 @@ describe('VoteService', () => {
     httpMock = TestBed.inject(HttpTestingController);
   });
 
-  afterEach(() => httpMock.verify());
+  afterEach(() => {
+    httpMock.verify();
+  });
 
   it('should check eligibility', () => {
     service.checkEligibility(1).subscribe(d => expect(d.eligible).toBeTruthy());
@@ -31,9 +33,12 @@ describe('VoteService', () => {
     req.flush({ recuCryptographique: 'abc' });
   });
 
-  it('should get my votes', () => {
+  it('should get my votes (chained calls)', () => {
     service.getMyVotes().subscribe(d => expect(d.length).toBe(1));
-    httpMock.expectOne(`${voteUrl}/my-votes`).flush([{ id: 1 }]);
+    // getMyVotes() first calls getVoteSummary() which hits /my-votes
+    httpMock.expectOne(`${voteUrl}/my-votes`).flush([{ electionId: 5 }]);
+    // Then it calls getMyReceipt() for each electionId
+    httpMock.expectOne(`${voteUrl}/my-receipt/5`).flush({ electionId: 5, recuCryptographique: 'abc' });
   });
 
   it('should get receipt', () => {

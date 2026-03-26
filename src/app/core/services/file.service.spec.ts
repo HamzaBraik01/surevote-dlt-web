@@ -16,7 +16,9 @@ describe('FileService', () => {
     httpMock = TestBed.inject(HttpTestingController);
   });
 
-  afterEach(() => httpMock.verify());
+  afterEach(() => {
+    httpMock.verify();
+  });
 
   it('should upload photo', () => {
     const file = new File([''], 'photo.jpg');

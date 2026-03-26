@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { ToastService } from '../../../core/services/toast.service';
+import { FooterComponent } from '../../../shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-verify-2fa',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, FooterComponent],
   template: `
     <header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm">
       <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -73,7 +74,7 @@ import { ToastService } from '../../../core/services/toast.service';
         </div>
       </div>
     </main>
-
+    <app-footer />
     <div class="fixed -bottom-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10"></div>
     <div class="fixed -top-24 -right-24 w-96 h-96 bg-primary-container/5 rounded-full blur-3xl -z-10"></div>
   `

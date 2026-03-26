@@ -4,11 +4,12 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { ToastService } from '../../../core/services/toast.service';
+import { FooterComponent } from '../../../shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, FooterComponent],
   template: `
     <main class="flex-grow flex items-center justify-center px-6 py-12 relative overflow-hidden min-h-screen bg-surface">
       <div class="absolute inset-0 pointer-events-none">
@@ -118,6 +119,7 @@ import { ToastService } from '../../../core/services/toast.service';
         </p>
       </div>
     </main>
+    <app-footer />
   `
 })
 export class RegisterComponent {

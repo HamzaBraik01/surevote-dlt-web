@@ -4,11 +4,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ElectionService } from '../../../core/services/election.service';
 import { ThemeService } from '../../../core/services/theme.service';
 import { ElectionResult } from '../../../core/models';
+import { FooterComponent } from '../../../shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-election-results',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, FooterComponent],
   template: `
     <header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/10">
       <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -61,6 +62,7 @@ import { ElectionResult } from '../../../core/models';
         }
       </div>
     </main>
+    <app-footer />
   `
 })
 export class ElectionResultsComponent implements OnInit {

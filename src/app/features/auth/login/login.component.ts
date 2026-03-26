@@ -4,12 +4,13 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { ToastService } from '../../../core/services/toast.service';
+import { FooterComponent } from '../../../shared/components/footer/footer.component';
 import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, FooterComponent],
   template: `
     <main class="flex-grow flex items-center justify-center px-6 py-12 relative overflow-hidden min-h-screen bg-surface">
       <!-- Background blurs -->
@@ -123,13 +124,7 @@ import { finalize } from 'rxjs/operators';
     </main>
 
     <!-- Footer -->
-    <footer class="py-6 px-6 text-center bg-surface">
-      <div class="flex justify-center space-x-6 text-[10px] font-bold uppercase tracking-[0.2em] text-outline">
-        <a class="hover:text-primary transition-colors" href="#">Support</a>
-        <a routerLink="/observer/audit" class="hover:text-primary transition-colors">Audit Public</a>
-        <a class="hover:text-primary transition-colors" href="#">Contact</a>
-      </div>
-    </footer>
+    <app-footer />
   `
 })
 export class LoginComponent {

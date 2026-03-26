@@ -7,11 +7,12 @@ import { ThemeService } from '../../../core/services/theme.service';
 import { Election } from '../../../core/models';
 import { timeout } from 'rxjs';
 import { StatusBadgeComponent } from '../../../shared/components/status-badge/status-badge.component';
+import { FooterComponent } from '../../../shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-public-elections',
   standalone: true,
-  imports: [CommonModule, RouterLink, StatusBadgeComponent],
+  imports: [CommonModule, RouterLink, StatusBadgeComponent, FooterComponent],
   template: `
     <header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/10">
       <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -83,6 +84,7 @@ import { StatusBadgeComponent } from '../../../shared/components/status-badge/st
         }
       </div>
     </main>
+    <app-footer />
   `
 })
 export class PublicElectionsComponent implements OnInit {

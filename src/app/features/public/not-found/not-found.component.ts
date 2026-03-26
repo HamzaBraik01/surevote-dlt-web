@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { FooterComponent } from '../../../shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-not-found',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, FooterComponent],
   template: `
     <div class="min-h-screen bg-surface flex flex-col items-center justify-center px-6 text-center">
       <div class="relative mb-8">
@@ -28,10 +29,8 @@ import { RouterLink } from '@angular/router';
           <span class="material-symbols-outlined text-sm">login</span> Se connecter
         </a>
       </div>
-      <p class="mt-16 text-sm text-on-surface-variant">
-        <span class="font-bold text-primary">SUREVOTE</span> · Système de Vote Électronique Sécurisé
-      </p>
     </div>
+    <app-footer />
   `
 })
 export class NotFoundComponent {}

@@ -8,11 +8,12 @@ import { ToastService } from '../../../core/services/toast.service';
 import { ThemeService } from '../../../core/services/theme.service';
 import { Election } from '../../../core/models';
 import { StatusBadgeComponent } from '../../../shared/components/status-badge/status-badge.component';
+import { FooterComponent } from '../../../shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, StatusBadgeComponent],
+  imports: [CommonModule, FormsModule, RouterLink, StatusBadgeComponent, FooterComponent],
   template: `
     <!-- Public Navbar -->
     <header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/10">
@@ -133,12 +134,7 @@ import { StatusBadgeComponent } from '../../../shared/components/status-badge/st
       </section>
 
       <!-- Footer -->
-      <footer class="py-12 border-t border-outline-variant/10">
-        <div class="max-w-6xl mx-auto px-6 text-center text-on-surface-variant text-sm">
-          <p class="font-bold text-primary mb-2">SUREVOTE</p>
-          <p>© 2026 Système de Vote Électronique Sécurisé. Tous droits réservés.</p>
-        </div>
-      </footer>
+      <app-footer />
     </main>
   `
 })

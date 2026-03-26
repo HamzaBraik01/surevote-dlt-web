@@ -4,11 +4,12 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { ToastService } from '../../../core/services/toast.service';
+import { FooterComponent } from '../../../shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-forgot-password',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, FooterComponent],
   template: `
     <main class="flex-grow flex items-center justify-center px-6 py-12 min-h-screen bg-surface relative overflow-hidden">
       <div class="absolute inset-0 pointer-events-none">
@@ -57,6 +58,7 @@ import { ToastService } from '../../../core/services/toast.service';
         </div>
       </div>
     </main>
+    <app-footer />
   `
 })
 export class ForgotPasswordComponent {

@@ -178,7 +178,12 @@ export class LoginComponent {
       })
     ).subscribe({
       next: (res) => {
-        if (res.requiresTwoFactor) {
+        // Detect 2FA requirement: backend may flag it via different fields
+        const needs2FA = res.requiresTwoFactor ||
+          (res.doubleFacteurActif && !res.otpVerified) ||
+          (res.user?.doubleFacteurActif && !res.otpVerified);
+
+        if (needs2FA) {
           this.router.navigate(['/auth/verify-2fa']);
         } else {
           const role = this.authService.userRole;

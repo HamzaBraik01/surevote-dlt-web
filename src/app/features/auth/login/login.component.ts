@@ -141,8 +141,14 @@ export class LoginComponent {
     private cdr: ChangeDetectorRef,
     private ngZone: NgZone
   ) {
-    // Clear any stale session data when arriving at the login page
-    this.authService.clearSession();
+    // If user is already logged in, redirect to their dashboard instead of clearing their session
+    if (this.authService.isLoggedIn) {
+      const role = this.authService.userRole;
+      if (role === 'ADMIN') this.router.navigate(['/admin/dashboard']);
+      else if (role === 'OBSERVATEUR') this.router.navigate(['/observer/dashboard']);
+      else this.router.navigate(['/voter/dashboard']);
+      // Don't clear session - user is actively logged in
+    }
 
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],

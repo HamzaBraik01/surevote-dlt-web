@@ -310,7 +310,7 @@ export class VotingBoothComponent implements OnInit, OnDestroy {
 
   submitVote(): void {
     this.showConfirm = false;
-    const candidatId = this.isBlankVote ? 0 : (this.selectedCandidat?.id || 0);
+    const candidatId = this.isBlankVote ? null : (this.selectedCandidat?.id || null);
     this.voteService.submitVote({ electionId: this.electionId, candidatId }).subscribe({
       next: (r) => { this.receipt = r; this.step = 3; this.cdr.markForCheck(); this.toastService.success('Vote enregistré avec succès !'); },
       error: (err) => { this.cdr.markForCheck(); this.toastService.error(err.error?.message || 'Erreur lors du vote'); }

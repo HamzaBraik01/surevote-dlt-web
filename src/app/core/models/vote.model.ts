@@ -1,6 +1,6 @@
 export interface VoteRequest {
   electionId: number;
-  candidatId: number;
+  candidatId: number | null;
 }
 
 export interface VoteReceipt {
